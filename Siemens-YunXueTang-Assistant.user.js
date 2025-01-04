@@ -62,6 +62,9 @@
         if (!isPlaying) {
             console.log("检测到停止播放，返回上一页...");
             window.history.back();
+            setTimeout(() => {
+                window.location.reload(); // 延迟一段时间后刷新页面
+            }, 1000); // 延迟1秒后刷新，确保页面能够跳转
         }
     }
 
@@ -79,6 +82,18 @@
             if (clickableElement && clickableElement.offsetWidth > 0 && clickableElement.offsetHeight > 0) {
                 clickableElement.click();
                 console.log('随机选择了一个视频');
+            }
+        }else {
+            // 如果没有找到目标，尝试翻页
+            const currentPageElement = document.querySelector('li.number.active'); // 获取当前页码元素
+            const currentPageNumber = parseInt(currentPageElement?.textContent.trim(), 10) || 1; // 获取当前页码值
+            const nextPage = document.querySelector(`li.number:nth-child(${currentPageNumber + 1})`); // 查找下一个页码按钮
+
+            if (nextPage) {
+                nextPage.click();
+                console.log('没有找到未看过的视频，正在翻页');
+            } else {
+                console.log('已是最后一页，无法翻页');
             }
         }
     }
