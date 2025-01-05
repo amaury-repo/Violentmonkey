@@ -7,8 +7,13 @@
 // @match        *://siemens.yunxuetang.cn/*
 // @grant        none
 // ==/UserScript==
-// 浏览器快捷方式加上下面两个参数禁用windows的效能模式和遮蔽暂停
+//
+// 浏览器快捷方式加上下面两个参数, 禁用windows的效能模式和遮蔽暂停
 // "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --disable-features=UseEcoQoSForBackgroundProcess --disable-backgrounding-occluded-windows
+// 浏览器的设置中关闭效率模式
+// 设置 ---> 系统和性能 ---> 效率模式
+//
+
 (function () {
     'use strict';
 
