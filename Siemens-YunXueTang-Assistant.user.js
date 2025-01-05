@@ -31,6 +31,15 @@
 
     // 播放页子程序
     function handleVideoPage() {
+        // 检测是否已完成
+        const completedElement = document.querySelector('span.opacity8.ml8');
+        if( completedElement && completedElement.textContent.trim() === "已完成学习") {
+            console.log("检测到已完成，返回上一页");
+            window.history.back();
+            setTimeout(() => {
+                window.location.reload();
+            }, 5000);
+        }
         // 自动静音
         const mediaElements = document.querySelectorAll('video, audio');
         mediaElements.forEach(media => {
@@ -62,7 +71,7 @@
             window.history.back();
             setTimeout(() => {
                 window.location.reload();
-            }, 1000);
+            }, 5000);
         }
     }
 
@@ -75,24 +84,22 @@
         }).map(tagDiv => tagDiv.closest('li'));
         // 找到视频自动播放
         if (items.length > 0) {
-            const randomItem = items[Math.floor(Math.random() * items.length)];
-            const clickableElement = randomItem?.querySelector('.kng-list-new__cover');
+            const firstItem = items[0];
+            const clickableElement = firstItem?.querySelector('.kng-list-new__cover');
             if (clickableElement && clickableElement.offsetWidth > 0 && clickableElement.offsetHeight > 0) {
                 clickableElement.click();
-                console.log('随机选择未学习的视频');
+                console.log('自动选择未学习的视频');
+            }}else {
+                // 未找到视频自动翻页
+                const currentPageElement = document.querySelector('li.number.active');
+                const currentPageNumber = parseInt(currentPageElement?.textContent.trim(), 10) || 1;
+                const nextPage = document.querySelector(`li.number:nth-child(${currentPageNumber + 1})`);
+                if (nextPage) {
+                    nextPage.click();
+                    console.log('没有找到未学习的视频，自动翻页');
+                } else {
+                    console.log('已是最后一页，无法翻页');
+                }
             }
-        }else {
-            // 未找到视频自动翻页
-            const currentPageElement = document.querySelector('li.number.active');
-            const currentPageNumber = parseInt(currentPageElement?.textContent.trim(), 10) || 1;
-            const nextPage = document.querySelector(`li.number:nth-child(${currentPageNumber + 1})`);
-            if (nextPage) {
-                nextPage.click();
-                console.log('没有找到未学习的视频，自动翻页');
-            } else {
-                console.log('已是最后一页，无法翻页');
-            }
-        }
     }
-
 })();
