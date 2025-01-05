@@ -34,7 +34,7 @@
         // 检测是否已完成
         const completedElement = document.querySelector('span.opacity8.ml8');
         if( completedElement && completedElement.textContent.trim() === "已完成学习") {
-            console.log("检测到已完成，返回上一页");
+            console.log("检测到已学完，返回上一页");
             window.history.back();
             setTimeout(() => {
                 window.location.reload();
@@ -88,7 +88,7 @@
             const clickableElement = firstItem?.querySelector('.kng-list-new__cover');
             if (clickableElement && clickableElement.offsetWidth > 0 && clickableElement.offsetHeight > 0) {
                 clickableElement.click();
-                console.log('自动选择未学习的视频');
+                console.log('自动选择未学完的视频');
             }}else {
                 // 未找到视频自动翻页
                 const currentPageElement = document.querySelector('li.number.active');
@@ -96,7 +96,7 @@
                 const nextPage = document.querySelector(`li.number:nth-child(${currentPageNumber + 1})`);
                 if (nextPage) {
                     nextPage.click();
-                    console.log('没有找到未学习的视频，自动翻页');
+                    console.log('没有找到未学完的视频，自动翻页');
                 } else {
                     console.log('已是最后一页，无法翻页');
                 }
