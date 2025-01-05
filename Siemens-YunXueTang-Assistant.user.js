@@ -4,7 +4,8 @@
 // @version      1.1
 // @description  西门子云学堂自学习助手
 // @author       Amaury
-// @match        *://siemens.yunxuetang.cn/*
+// @match        *://siemens.yunxuetang.cn/*/video*
+// @match        *://siemens.yunxuetang.cn/*/list*
 // @grant        none
 // ==/UserScript==
 //
@@ -23,8 +24,8 @@
     setInterval(() => {
         // 判断当前页是播放页还是列表页
         const currentUrl = window.location.href;
-        const isVideoPage = currentUrl.includes('#/video');
-        const isListPage = currentUrl.includes('#/list');
+        const isVideoPage = currentUrl.includes('/video');
+        const isListPage = currentUrl.includes('/list');
 
         if (isVideoPage) {
             console.log("执行播放页子程序");
