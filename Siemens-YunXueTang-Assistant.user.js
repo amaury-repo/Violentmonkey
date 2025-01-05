@@ -8,10 +8,12 @@
 // @grant        none
 // ==/UserScript==
 //
-// 浏览器快捷方式加上下面两个参数, 禁用windows的效能模式和遮蔽暂停
-// "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --disable-features=UseEcoQoSForBackgroundProcess --disable-backgrounding-occluded-windows
+// 浏览器快捷方式加上下面的参数, 禁用windows的效能模式
+// "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --disable-features=UseEcoQoSForBackgroundProcess
 // 浏览器的设置中关闭效率模式
 // 设置 ---> 系统和性能 ---> 效率模式
+// 浏览器添加组策略防止暂停
+// reg add HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Edge /v WindowOcclusionEnabled /t REG_DWORD /d 0 /f
 //
 
 (function () {
