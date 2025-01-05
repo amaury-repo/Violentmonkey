@@ -1,64 +1,46 @@
 // ==UserScript==
 // @name         Siemens YunXueTang Assistant
 // @namespace    https://github.com/Amaury-GitHub/Tampermonkey
-// @version      1.2
-// @description  西门子云学堂自动学习
+// @version      1.1
+// @description  西门子云学堂自学习助手
 // @author       Amaury
 // @match        *://siemens.yunxuetang.cn/*
 // @grant        none
 // ==/UserScript==
-
+// 浏览器快捷方式加上下面两个参数禁用windows的效能模式和遮蔽暂停
+// "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --disable-features=UseEcoQoSForBackgroundProcess --disable-backgrounding-occluded-windows
 (function () {
     'use strict';
 
-    // 10s执行一次
-    const workerCode = `
-        let interval = 10000;
-        self.onmessage = (e) => {
-            if (e.data === 'start') {
-                setInterval(() => {
-                    self.postMessage('tick');
-                }, interval);
-            }
-        };
-    `;
-
-    // 创建 Worker Blob
-    const workerBlob = new Blob([workerCode], { type: "application/javascript" });
-    const workerUrl = URL.createObjectURL(workerBlob);
-    const worker = new Worker(workerUrl);
-
-    // 启动 Worker 定时任务
-    worker.postMessage('start');
-
-    // 监听 Worker 消息
-    worker.onmessage = () => {
+    // 定时任务，10秒循环
+    setInterval(() => {
+        // 判断当前页是播放页还是列表页
         const currentUrl = window.location.href;
         const isVideoPage = currentUrl.includes('#/video');
         const isListPage = currentUrl.includes('#/list');
 
         if (isVideoPage) {
+            console.log("执行播放页子程序");
             handleVideoPage();
         } else if (isListPage) {
+            console.log("执行列表页子程序");
             handleListPage();
         } else {
             console.log("无法识别页面类型");
         }
-    };
+    }, 10000);
 
     // 播放页子程序
     function handleVideoPage() {
-        // 检测是否已完成学习
+        // 已学完自动返回上页
         const completedElement = document.querySelector('span.opacity8.ml8');
-        if (completedElement && completedElement.textContent.trim() === "已完成学习") {
+        if( completedElement && completedElement.textContent.trim() === "已完成学习") {
             console.log("检测到已学完，返回上一页");
             window.history.back();
             setTimeout(() => {
                 window.location.reload();
-            }, 5000);
-            return;
+            }, 2000);
         }
-
         // 自动静音
         const mediaElements = document.querySelectorAll('video, audio');
         mediaElements.forEach(media => {
@@ -66,43 +48,35 @@
                 media.muted = true;
             }
         });
-
-        // 检测是否正在播放
+        // 检测播放是否停止
         let isPlaying = false;
         mediaElements.forEach(media => {
             if (!media.paused && !media.ended && media.readyState > 2) {
                 isPlaying = true;
             }
         });
-
-        // 自动点击播放按钮
+        // 自动点击按钮
         const buttons = Array.from(document.getElementsByTagName('button'));
         buttons.forEach(button => {
             const text = button.textContent.trim();
             if ((text === "开始学习" || text === "继续学习") && button.offsetWidth > 0) {
                 button.click();
-                console.log('自动点击按钮：' + text);
+                console.log('自动点击' + text);
                 isPlaying = true;
             }
         });
-
-        // 检测未播放的情况并尝试重新播放
+        // 检测到未播放尝试重新播放
         if (!isPlaying) {
-            setInterval(() => {
-                document.querySelectorAll("video, audio").forEach(media => {
-                    if (media.paused || media.ended) {
-                        console.log("检测到未播放，尝试恢复播放");
-                        const event = new MouseEvent("click", { bubbles: true, cancelable: true });
-                        document.body.dispatchEvent(event);
-                        media.play().catch(err => {
-                            console.log("播放失败：", err);
-                        });
-                    }
-                });
-            }, 1000);
+            document.querySelectorAll("video, audio").forEach(media => {
+                if (media.paused || media.ended) {
+                    console.log("检测到未播放，尝试恢复播放");
+                    media.play().catch(err => {
+                        console.log("播放失败：", err);
+                    });
+                }
+            });
         }
     }
-
 
     // 列表页子程序
     function handleListPage() {
@@ -124,7 +98,7 @@
                 nextPage.click();
                 console.log('自动翻页');
                 setTimeout(() => {
-                }, 5000);
+                }, 2000);
             } else {
                 console.log('自动翻页失败');
             }
