@@ -31,7 +31,7 @@
 
     // 播放页子程序
     function handleVideoPage() {
-        // 检测是否已完成
+        // 已学完自动返回上页
         const completedElement = document.querySelector('span.opacity8.ml8');
         if( completedElement && completedElement.textContent.trim() === "已完成学习") {
             console.log("检测到已学完，返回上一页");
@@ -77,28 +77,28 @@
 
     // 列表页子程序
     function handleListPage() {
-        // 自动查找未学习的视频
+        // 自动查找未学完的视频
         const items = Array.from(document.querySelectorAll('.kng-list-new__tags')).filter(tagDiv => {
             const tagTexts = Array.from(tagDiv.querySelectorAll('.kng-list-new__tag')).map(tag => tag.textContent.trim());
             return tagTexts.includes("视频") && !tagTexts.includes("已学完");
         }).map(tagDiv => tagDiv.closest('li'));
-        // 找到视频自动播放
+        // 自动播放
         if (items.length > 0) {
             const firstItem = items[0];
             const clickableElement = firstItem?.querySelector('.kng-list-new__cover');
             if (clickableElement && clickableElement.offsetWidth > 0 && clickableElement.offsetHeight > 0) {
                 clickableElement.click();
-                console.log('自动选择未学完的视频');
+                console.log('自动播放未学完的视频');
             }}else {
-                // 未找到视频自动翻页
+                // 自动翻页
                 const currentPageElement = document.querySelector('li.number.active');
                 const currentPageNumber = parseInt(currentPageElement?.textContent.trim(), 10) || 1;
                 const nextPage = document.querySelector(`li.number:nth-child(${currentPageNumber + 1})`);
                 if (nextPage) {
                     nextPage.click();
-                    console.log('没有找到未学完的视频，自动翻页');
+                    console.log('自动翻页');
                 } else {
-                    console.log('已是最后一页，无法翻页');
+                    console.log('自动翻页失败');
                 }
             }
     }
