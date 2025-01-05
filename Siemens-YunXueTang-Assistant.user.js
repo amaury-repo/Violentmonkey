@@ -73,12 +73,10 @@
         // 检测到未播放尝试重新播放
         if (!isPlaying) {
             document.querySelectorAll("video, audio").forEach(media => {
-                if (media.paused || media.ended) {
                     console.log("检测到未播放，尝试恢复播放");
                     media.play().catch(err => {
                         console.log("播放失败：", err);
                     });
-                }
             });
         }
     }
