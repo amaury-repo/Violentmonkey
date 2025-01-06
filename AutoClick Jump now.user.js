@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         AutoClick Jump now
-// @namespace    https://github.com/Amaury-GitHub/Tampermonkey
+// @namespace    https://github.com/amaury-repo/Violentmonkey
 // @version      0.1
 // @description  自动点击Jump now
 // @author       Amaury
