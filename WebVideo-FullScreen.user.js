@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         WebVideo FullScreen
-// @namespace    https://github.com/Amaury-GitHub/Tampermonkey
+// @namespace    https://github.com/amaury-repo/Violentmonkey
 // @version      0.1
 // @description  网页全屏
 // @author       Amaury
