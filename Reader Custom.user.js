@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Reader Custom
-// @namespace    https://github.com/Amaury-GitHub/Tampermonkey
+// @namespace    https://github.com/amaury-repo/Violentmonkey
 // @version      0.1
 // @description  屏蔽左右键，自动重设尺寸
 // @author       Amaury
