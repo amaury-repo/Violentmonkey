@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Kittens Game maxValue
-// @namespace    https://github.com/Amaury-GitHub/Tampermonkey
+// @namespace    https://github.com/amaury-repo/Violentmonkey
 // @version      1.0
 // @description  猫国建设者,解放小猫
 // @author       Amaury
