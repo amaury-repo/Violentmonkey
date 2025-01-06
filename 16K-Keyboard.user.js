@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         16K Keyboard
-// @namespace    https://github.com/Amaury-GitHub/Tampermonkey
+// @namespace    https://github.com/amaury-repo/Violentmonkey
 // @version      0.1
 // @description  使用键盘快捷键浏览
 // @author       Amaury
