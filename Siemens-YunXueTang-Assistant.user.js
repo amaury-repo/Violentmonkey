@@ -2,7 +2,7 @@
 // @name         Siemens YunXueTang Assistant
 // @namespace    https://github.com/amaury-repo/Violentmonkey
 // @version      1.1
-// @description  西门子云学堂自学习助手
+// @description  西门子云学堂自动学习
 // @author       Amaury
 // @match        *://siemens.yunxuetang.cn/*/video*
 // @match        *://siemens.yunxuetang.cn/*/list*
