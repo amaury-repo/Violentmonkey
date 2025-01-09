@@ -67,7 +67,7 @@
         const buttons = Array.from(document.getElementsByTagName('button'));
         buttons.forEach(button => {
             const text = button.textContent.trim();
-            if ((text === "开始学习" || text === "继续学习") && button.offsetWidth > 0) {
+            if ((text === "开始学习" || text === "继续学习" || text === "立即兑换" || text === "确认兑换") && button.offsetWidth > 0) {
                 button.click();
                 console.log('自动点击' + text);
                 isPlaying = true;
