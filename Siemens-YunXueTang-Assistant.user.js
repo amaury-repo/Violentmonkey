@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Siemens YunXueTang Assistant
 // @namespace    https://github.com/amaury-repo/Violentmonkey
-// @version      _20250113_2005
+// @version      20250113
 // @description  西门子云学堂自动学习
 // @author       Amaury
 // @match        *://siemens.yunxuetang.cn/*/video*
