@@ -107,8 +107,6 @@
             })
             .map(coverDiv => coverDiv.closest('li'));
 
-        console.log('筛选出的未学完视频项:', items);
-
         if (items.length > 0) {
             const firstItem = items[0];
             const clickableElement = firstItem?.querySelector('.kng-list-new__cover');
