@@ -86,17 +86,22 @@
 
     // 列表页子程序
     function handleListPage() {
-        const items = Array.from(
-            document.querySelectorAll(
-                '.kng-list-new__tags:not(.kng-list-new__tags1 .kng-list-new__price)'
-            )
-        )
-            .filter(tagDiv => {
-                const tagTexts = Array.from(tagDiv.querySelectorAll('.kng-list-new__tag'))
+        const items = Array.from(document.querySelectorAll('.kng-list-new__cover'))
+            .filter(coverDiv => {
+                const tags1Div = coverDiv.querySelector('.kng-list-new__tags1');
+                if (tags1Div && tags1Div.querySelector('.kng-list-new__price')) {
+                    return false;
+                }
+
+                const tagsDiv = coverDiv.querySelector('.kng-list-new__tags');
+                if (!tagsDiv) return false;
+
+                const tagTexts = Array.from(tagsDiv.querySelectorAll('.kng-list-new__tag'))
                     .map(tag => tag.textContent.trim());
+
                 return tagTexts.includes("视频") && !tagTexts.includes("已学完");
             })
-            .map(tagDiv => tagDiv.closest('li'));
+            .map(coverDiv => coverDiv.closest('li'));
 
         return items;
 
