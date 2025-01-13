@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Siemens YunXueTang Assistant
 // @namespace    https://github.com/amaury-repo/Violentmonkey
-// @version      20250109
+// @version      20250113
 // @description  西门子云学堂自动学习
 // @author       Amaury
 // @match        *://siemens.yunxuetang.cn/*/video*
@@ -86,10 +86,19 @@
 
     // 列表页子程序
     function handleListPage() {
-        const items = Array.from(document.querySelectorAll('.kng-list-new__tags')).filter(tagDiv => {
-            const tagTexts = Array.from(tagDiv.querySelectorAll('.kng-list-new__tag')).map(tag => tag.textContent.trim());
-            return tagTexts.includes("视频") && !tagTexts.includes("已学完");
-        }).map(tagDiv => tagDiv.closest('li'));
+        const items = Array.from(
+            document.querySelectorAll(
+                '.kng-list-new__tags:not(.kng-list-new__tags1 .kng-list-new__price)'
+            )
+        )
+            .filter(tagDiv => {
+                const tagTexts = Array.from(tagDiv.querySelectorAll('.kng-list-new__tag'))
+                    .map(tag => tag.textContent.trim());
+                return tagTexts.includes("视频") && !tagTexts.includes("已学完");
+            })
+            .map(tagDiv => tagDiv.closest('li'));
+
+        return items;
 
         if (items.length > 0) {
             const firstItem = items[0];
