@@ -86,6 +86,7 @@
 
     // 列表页子程序
     function handleListPage() {
+        // 筛选未学习的视频, 跳过需要购买的内容
         const items = Array.from(document.querySelectorAll('.kng-list-new__cover'))
             .filter(coverDiv => {
                 const tags1Div = coverDiv.querySelector('.kng-list-new__tags1');
@@ -94,16 +95,19 @@
                 }
 
                 const tagsDiv = coverDiv.querySelector('.kng-list-new__tags');
-                if (!tagsDiv) return false;
+                if (!tagsDiv) {
+                    return false;
+                }
 
                 const tagTexts = Array.from(tagsDiv.querySelectorAll('.kng-list-new__tag'))
                     .map(tag => tag.textContent.trim());
 
-                return tagTexts.includes("视频") && !tagTexts.includes("已学完");
+                const result = tagTexts.includes("视频") && !tagTexts.includes("已学完");
+                return result;
             })
             .map(coverDiv => coverDiv.closest('li'));
 
-        return items;
+        console.log('筛选出的未学完视频项:', items);
 
         if (items.length > 0) {
             const firstItem = items[0];
