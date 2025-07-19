@@ -99,7 +99,7 @@
     predictionElement.style.borderRadius = '8px';
     predictionElement.style.zIndex = 9999;
     predictionElement.style.fontSize = '14px';
-    predictionElement.style.width = '250px';
+    predictionElement.style.width = '200px';
 
     // 居中标题
     const titleDiv = document.createElement('div');
@@ -135,7 +135,7 @@
     errorElement.style.borderRadius = '8px';
     errorElement.style.zIndex = 9999;
     errorElement.style.fontSize = '14px';
-    errorElement.style.width = '250px';
+    errorElement.style.width = '200px';
 
     // 居中标题
     const titleDiv = document.createElement('div');
