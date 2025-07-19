@@ -42,7 +42,7 @@
     const currentEl = getValueByLabel("当前电量");
 
     if (!timeEl || !limitEl || !currentEl) {
-      showError("页面缺少必要字段：充电剩余时间 / 上限 / 当前电量");
+      showError("未在充电");
       return;
     }
 
@@ -72,7 +72,7 @@
       currentPercent >= targetPercent ||
       currentPercent >= limitPercent
     ) {
-      showError("无法估算：电量过高或时间不可用");
+      showError(`电量已到达 ${targetPercent}%`);
       return;
     }
 
@@ -88,7 +88,7 @@
       return `${hours} h, ${mins} min`;
     }
 
-    // 页面显示结果
+    // 显示结果
     predictionElement = document.createElement('div');
     predictionElement.style.position = 'fixed';
     predictionElement.style.top = '100px';
@@ -101,15 +101,15 @@
     predictionElement.style.fontSize = '14px';
     predictionElement.style.width = '200px';
 
-    // 居中标题
+    // 标题
     const titleDiv = document.createElement('div');
     titleDiv.style.textAlign = 'center';
     titleDiv.style.fontSize = '18px';
     titleDiv.style.fontWeight = 'bold';
     titleDiv.style.marginBottom = '8px';
-    titleDiv.innerHTML = `${targetPercent}% 充电`;
+    titleDiv.innerHTML = `🔋→ ${targetPercent}%`;
 
-    // 内容区域
+    // 内容
     const contentDiv = document.createElement('div');
     contentDiv.innerHTML = `
       充电剩余时间&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${formatTime(estMinutes)}<br>
@@ -123,41 +123,42 @@
     document.body.appendChild(predictionElement);
   }
 
-  // 显示错误信息
-  function showError(message) {
-    errorElement = document.createElement('div');
-    errorElement.style.position = 'fixed';
-    errorElement.style.top = '100px';
-    errorElement.style.left = '10px';
-    errorElement.style.padding = '12px';
-    errorElement.style.backgroundColor = 'rgba(255,0,0,0.8)';
-    errorElement.style.color = '#fff';
-    errorElement.style.borderRadius = '8px';
-    errorElement.style.zIndex = 9999;
-    errorElement.style.fontSize = '14px';
-    errorElement.style.width = '200px';
+// 显示错误信息
+function showError(message) {
+  const errorElement = document.createElement('div');
+  errorElement.style.position = 'fixed';
+  errorElement.style.top = '100px';
+  errorElement.style.left = '10px';
+  errorElement.style.padding = '12px 16px';
+  errorElement.style.backgroundColor = 'rgba(255, 0, 0, 0.85)';
+  errorElement.style.color = '#fff';
+  errorElement.style.borderRadius = '10px';
+  errorElement.style.zIndex = 9999;
+  errorElement.style.fontSize = '14px';
+  errorElement.style.minWidth = '220px';
+  errorElement.style.textAlign = 'center';
 
-    // 居中标题
-    const titleDiv = document.createElement('div');
-    titleDiv.style.textAlign = 'center';
-    titleDiv.style.fontSize = '18px';
-    titleDiv.style.fontWeight = 'bold';
-    titleDiv.style.marginBottom = '8px';
-    titleDiv.innerHTML = `${targetPercent}% 充电`;
+  // 标题
+  const titleDiv = document.createElement('div');
+  titleDiv.style.fontSize = '18px';
+  titleDiv.style.fontWeight = 'bold';
+  titleDiv.style.marginBottom = '6px';
+  titleDiv.innerHTML = `🔋 → ${targetPercent}%`;
 
-    // 内容区域
-    const contentDiv = document.createElement('div');
-    contentDiv.innerHTML = message;
+  // 内容
+  const contentDiv = document.createElement('div');
+  contentDiv.innerHTML = message;
 
-    // 组装
-    errorElement.appendChild(titleDiv);
-    errorElement.appendChild(contentDiv);
-    document.body.appendChild(errorElement);
-  }
+  // 组装
+  errorElement.appendChild(titleDiv);
+  errorElement.appendChild(contentDiv);
+  document.body.appendChild(errorElement);
+}
+
 
   // 初始执行一次
   updatePrediction();
 
   // 设置定时器
   setInterval(updatePrediction, refreshInterval);
-})();    
+})();
