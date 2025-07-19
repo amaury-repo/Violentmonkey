@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        TeslaMate Charging Prediction
 // @namespace   https://github.com/amaury-repo/Violentmonkey
-// @match       http://192.168.10.2:9002/*
+// @match       http://192.168.10.2:9002/
 // @grant       none
 // @version     20250720
 // @author      Amaury
