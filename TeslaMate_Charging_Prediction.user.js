@@ -124,7 +124,7 @@
     const contentDiv = document.createElement('div');
     contentDiv.innerHTML = `
       充电剩余时间&nbsp;&nbsp;&nbsp;${formatTime(estMinutes)}<br>
-      预计完成时间&nbsp;&nbsp;&nbsp;${formatDateTime(finishTime)}
+      预计完成时间&nbsp;&nbsp;&nbsp;${finishTime.toLocaleTimeString()}
     `;
 
     // 组装
