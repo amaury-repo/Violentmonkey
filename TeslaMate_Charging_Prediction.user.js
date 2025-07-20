@@ -98,30 +98,42 @@
     predictionElement.style.left = titleRect.right + 20 + 'px';
     predictionElement.style.top = titleRect.top - 12 + 'px';
 
-    // 样式
-    predictionElement.style.padding = '12px 16px';
-    predictionElement.style.backgroundColor = '#f5f5f5';
-    predictionElement.style.color = '#333';
-    predictionElement.style.border = '1px solid #ddd';
-    predictionElement.style.boxShadow = '0 2px 6px rgba(0,0,0,0.1)';
-    predictionElement.style.borderRadius = '8px';
-    predictionElement.style.zIndex = 9999;
-    predictionElement.style.fontSize = '14px';
-    predictionElement.style.minWidth = '200px';
+    // 核心：与错误提示框完全一致的样式
+    predictionElement.style.cssText += `
+      background-color: #fff; /* 与错误框背景一致 */
+      border-radius: 0.25rem; /* 与错误框圆角一致 */
+      box-shadow: 0 0.5em 1em -0.125em #0a0a0a1a, 0 0 0 1px #0a0a0a05; /* 与错误框阴影一致 */
+      color: #4a4a4a; /* 与错误框文字颜色一致 */
+      font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif; /* 与错误框字体一致 */
+      font-size: 1em; /* 与错误框文字大小一致 */
+      padding: 1.5rem; /* 与错误框内边距一致 */
+      z-index: 9999;
+      min-width: 200px; /* 与错误框宽度一致 */
+      max-height: 80px; /* 与错误框最大高度一致 */
+    `;
 
-    // 标题
+    // 标题样式与错误框标题完全一致
     const titleDiv = document.createElement('div');
-    titleDiv.style.textAlign = 'center';
-    titleDiv.style.fontSize = '18px';
-    titleDiv.style.fontWeight = 'bold';
-    titleDiv.style.marginBottom = '8px';
+    titleDiv.style.cssText = `
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: -15px; /* 与错误框标题上移一致 */
+      margin-bottom: 5px; /* 与错误框标题间距一致 */
+    `;
     titleDiv.innerHTML = `🔋 → ${targetPercent}%`;
 
-    // 内容
+    // 内容样式与错误框内容完全一致
     const contentDiv = document.createElement('div');
+    contentDiv.style.cssText = `
+      text-align: center;
+      font-size: 12px; /* 与错误框内容文字大小一致 */
+      line-height: 1.6;
+      margin-top: -5px; /* 与错误框内容上移一致 */
+    `;
     contentDiv.innerHTML = `
-      充电剩余时间&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${formatTime(estMinutes)}<br>
-      预计完成时间&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${finishTime.toLocaleTimeString()}
+      充电剩余时间: ${formatTime(estMinutes)}<br>
+      预计完成时间: ${finishTime.toLocaleTimeString()}
     `;
 
     // 组装
@@ -130,42 +142,54 @@
     document.body.appendChild(predictionElement);
   }
 
-  // 显示错误信息
+  // 错误提示框同步应用原页面卡片样式（可微调阴影/颜色区分状态）
   function showError(message) {
     const titleEl = getTitleElement();
     if (titleEl) {
-        const titleRect = titleEl.getBoundingClientRect();
-        errorElement = document.createElement('div');
-        errorElement.style.position = 'fixed';
-        errorElement.style.left = titleRect.right + 20 + 'px';
-        errorElement.style.top = titleRect.top - 12 + 'px';
-        errorElement.style.padding = '12px 16px';
-        errorElement.style.backgroundColor = '#f5f5f5';
-        errorElement.style.color = '#333';
-        errorElement.style.border = '1px solid #ddd';
-        errorElement.style.boxShadow = '0 2px 6px rgba(0,0,0,0.1)';
-        errorElement.style.borderRadius = '8px';
-        errorElement.style.zIndex = 9999;
-        errorElement.style.fontSize = '14px';
-        errorElement.style.minWidth = '200px';
-        errorElement.style.textAlign = 'center';
+      const titleRect = titleEl.getBoundingClientRect();
+      errorElement = document.createElement('div');
+      // 错误框基础样式与 .card 一致，微调背景/阴影区分状态
+      errorElement.style.cssText = `
+        position: fixed;
+        left: ${titleRect.right + 10}px;
+        top: ${titleRect.top - 12}px;
+        background-color: #fff; /* 原页面卡片背景 */
+        border-radius: 0.25rem; /* 与原页面一致 */
+        box-shadow: 0 0.5em 1em -0.125em #0a0a0a1a, 0 0 0 1px #0a0a0a05; /* 原页面卡片阴影 */
+        color: #4a4a4a; /* 原页面文字颜色 */
+        font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif; /* 与原页面一致 */
+        font-size: 1em; /* 与原页面一致 */
+        padding: 1.5rem; /* 与原页面一致 */
+        z-index: 9999;
+        min-width: 200px;
+        max-height: 80px; /* 限制最大高度 */
+        text-align: center;
+      `;
 
-        // 标题
-        const titleDiv = document.createElement('div');
-        titleDiv.style.textAlign = 'center';
-        titleDiv.style.fontSize = '18px';
-        titleDiv.style.fontWeight = 'bold';
-        titleDiv.style.marginBottom = '8px';
-        titleDiv.innerHTML = `🔋 → ${targetPercent}%`;
+      // 调整错误标题位置（上移）
+      const titleDiv = document.createElement('div');
+      titleDiv.style.cssText = `
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: -15px; /* 负值使标题上移 */
+        margin-bottom: 5px; /* 减少标题与内容的间距 */
+      `;
+      titleDiv.innerHTML = `🔋 → ${targetPercent}%`;
 
-        // 内容
-        const contentDiv = document.createElement('div');
-        contentDiv.innerHTML = message;
+      // 调整错误内容位置（上移）
+      const contentDiv = document.createElement('div');
+      contentDiv.style.cssText = `
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.6;
+        margin-top: -5px; /* 内容整体上移 */
+      `;
+      contentDiv.innerHTML = `&nbsp;<br>${message}`;
 
-        // 组装
-        errorElement.appendChild(titleDiv);
-        errorElement.appendChild(contentDiv);
-        document.body.appendChild(errorElement);
+      errorElement.appendChild(titleDiv);
+      errorElement.appendChild(contentDiv);
+      document.body.appendChild(errorElement);
     }
   }
 
