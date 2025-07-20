@@ -70,7 +70,7 @@
 
     // 校验数据
     if (currentPercent >= targetPercent) {
-      showError(`电量已到达 ${targetPercent}%`);
+      showError("充电完成");
       return;
     }
 
@@ -86,9 +86,9 @@
       return `${hours} h, ${mins} min`;
     }
 
-    // 显示结果 - 调整位置与错误提示一致
+    // 显示结果
     const titleEl = getTitleElement();
-    if (!titleEl) return; // 如果找不到标题元素，则不显示预测结果
+    if (!titleEl) return;
 
     predictionElement = document.createElement('div');
     const titleRect = titleEl.getBoundingClientRect();
@@ -98,12 +98,12 @@
     predictionElement.style.left = titleRect.right + 20 + 'px';
     predictionElement.style.top = titleRect.top - 12 + 'px';
 
-    // 保持与错误提示一致的样式风格
+    // 样式
     predictionElement.style.padding = '12px 16px';
-    predictionElement.style.backgroundColor = '#f5f5f5'; // 浅灰色背景
-    predictionElement.style.color = '#333'; // 深色文字
-    predictionElement.style.border = '1px solid #ddd'; // 浅灰色边框
-    predictionElement.style.boxShadow = '0 2px 6px rgba(0,0,0,0.1)'; // 柔和阴影
+    predictionElement.style.backgroundColor = '#f5f5f5';
+    predictionElement.style.color = '#333';
+    predictionElement.style.border = '1px solid #ddd';
+    predictionElement.style.boxShadow = '0 2px 6px rgba(0,0,0,0.1)';
     predictionElement.style.borderRadius = '8px';
     predictionElement.style.zIndex = 9999;
     predictionElement.style.fontSize = '14px';
@@ -127,7 +127,6 @@
     // 组装
     predictionElement.appendChild(titleDiv);
     predictionElement.appendChild(contentDiv);
-
     document.body.appendChild(predictionElement);
   }
 
@@ -137,7 +136,6 @@
     if (titleEl) {
         const titleRect = titleEl.getBoundingClientRect();
         errorElement = document.createElement('div');
-        // 保持与预测结果一致的样式风格
         errorElement.style.position = 'fixed';
         errorElement.style.left = titleRect.right + 20 + 'px';
         errorElement.style.top = titleRect.top - 12 + 'px';
@@ -152,7 +150,7 @@
         errorElement.style.minWidth = '200px';
         errorElement.style.textAlign = 'center';
 
-        // 居中标题（与预测结果一致）
+        // 标题
         const titleDiv = document.createElement('div');
         titleDiv.style.textAlign = 'center';
         titleDiv.style.fontSize = '18px';
@@ -160,11 +158,11 @@
         titleDiv.style.marginBottom = '8px';
         titleDiv.innerHTML = `🔋 → ${targetPercent}%`;
 
-        // 错误消息内容
+        // 内容
         const contentDiv = document.createElement('div');
         contentDiv.innerHTML = message;
 
-        // 组装错误元素
+        // 组装
         errorElement.appendChild(titleDiv);
         errorElement.appendChild(contentDiv);
         document.body.appendChild(errorElement);
