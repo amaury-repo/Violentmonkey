@@ -108,7 +108,7 @@
       font-size: 1em;
       padding: 1.5rem;
       z-index: 9999;
-      min-width: 200px;
+      max-width: 200px;
       max-height: 80px;
     `;
 
@@ -159,7 +159,7 @@
         font-size: 1em;
         padding: 1.5rem;
         z-index: 9999;
-        min-width: 200px;
+        max-width: 200px;
         max-height: 80px;
         text-align: center;
       `;
