@@ -98,42 +98,41 @@
     predictionElement.style.left = titleRect.right + 20 + 'px';
     predictionElement.style.top = titleRect.top - 12 + 'px';
 
-    // 核心：与错误提示框完全一致的样式
+    // 样式
     predictionElement.style.cssText += `
-      background-color: #fff; /* 与错误框背景一致 */
-      border-radius: 0.25rem; /* 与错误框圆角一致 */
-      box-shadow: 0 0.5em 1em -0.125em #0a0a0a1a, 0 0 0 1px #0a0a0a05; /* 与错误框阴影一致 */
-      color: #4a4a4a; /* 与错误框文字颜色一致 */
-      font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif; /* 与错误框字体一致 */
-      font-size: 1em; /* 与错误框文字大小一致 */
-      padding: 1.5rem; /* 与错误框内边距一致 */
+      background-color: #fff;
+      border-radius: 0.25rem;
+      box-shadow: 0 0.5em 1em -0.125em #0a0a0a1a, 0 0 0 1px #0a0a0a05;
+      color: #4a4a4a;
+      font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 1em;
+      padding: 1.5rem;
       z-index: 9999;
-      min-width: 200px; /* 与错误框宽度一致 */
-      max-height: 80px; /* 与错误框最大高度一致 */
+      min-width: 200px;
+      max-height: 80px;
     `;
 
-    // 标题样式与错误框标题完全一致
+    // 标题
     const titleDiv = document.createElement('div');
     titleDiv.style.cssText = `
       text-align: center;
       font-size: 18px;
       font-weight: bold;
-      margin-top: -15px; /* 与错误框标题上移一致 */
-      margin-bottom: 5px; /* 与错误框标题间距一致 */
+      margin-top: -15px;
+      margin-bottom: 5px;
     `;
     titleDiv.innerHTML = `🔋 → ${targetPercent}%`;
 
-    // 内容样式与错误框内容完全一致
+    // 内容
     const contentDiv = document.createElement('div');
     contentDiv.style.cssText = `
-      text-align: center;
-      font-size: 12px; /* 与错误框内容文字大小一致 */
+      font-size: 12px;
       line-height: 1.6;
-      margin-top: -5px; /* 与错误框内容上移一致 */
+      margin-top: -5px;
     `;
     contentDiv.innerHTML = `
-      充电剩余时间: ${formatTime(estMinutes)}<br>
-      预计完成时间: ${finishTime.toLocaleTimeString()}
+      充电剩余时间&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${formatTime(estMinutes)}<br>
+      预计完成时间&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${finishTime.toLocaleTimeString()}
     `;
 
     // 组装
@@ -142,48 +141,47 @@
     document.body.appendChild(predictionElement);
   }
 
-  // 错误提示框同步应用原页面卡片样式（可微调阴影/颜色区分状态）
+  // 错误提示
   function showError(message) {
     const titleEl = getTitleElement();
     if (titleEl) {
       const titleRect = titleEl.getBoundingClientRect();
       errorElement = document.createElement('div');
-      // 错误框基础样式与 .card 一致，微调背景/阴影区分状态
       errorElement.style.cssText = `
         position: fixed;
         left: ${titleRect.right + 10}px;
         top: ${titleRect.top - 12}px;
-        background-color: #fff; /* 原页面卡片背景 */
-        border-radius: 0.25rem; /* 与原页面一致 */
-        box-shadow: 0 0.5em 1em -0.125em #0a0a0a1a, 0 0 0 1px #0a0a0a05; /* 原页面卡片阴影 */
-        color: #4a4a4a; /* 原页面文字颜色 */
-        font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif; /* 与原页面一致 */
-        font-size: 1em; /* 与原页面一致 */
-        padding: 1.5rem; /* 与原页面一致 */
+        background-color: #fff;
+        border-radius: 0.25rem;
+        box-shadow: 0 0.5em 1em -0.125em #0a0a0a1a, 0 0 0 1px #0a0a0a05;
+        color: #4a4a4a;
+        font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 1em;
+        padding: 1.5rem;
         z-index: 9999;
         min-width: 200px;
-        max-height: 80px; /* 限制最大高度 */
+        max-height: 80px;
         text-align: center;
       `;
 
-      // 调整错误标题位置（上移）
+      // 标题
       const titleDiv = document.createElement('div');
       titleDiv.style.cssText = `
         text-align: center;
         font-size: 18px;
         font-weight: bold;
-        margin-top: -15px; /* 负值使标题上移 */
-        margin-bottom: 5px; /* 减少标题与内容的间距 */
+        margin-top: -15px;
+        margin-bottom: 5px;
       `;
       titleDiv.innerHTML = `🔋 → ${targetPercent}%`;
 
-      // 调整错误内容位置（上移）
+      // 内容
       const contentDiv = document.createElement('div');
       contentDiv.style.cssText = `
         text-align: center;
         font-size: 12px;
         line-height: 1.6;
-        margin-top: -5px; /* 内容整体上移 */
+        margin-top: -5px;
       `;
       contentDiv.innerHTML = `&nbsp;<br>${message}`;
 
