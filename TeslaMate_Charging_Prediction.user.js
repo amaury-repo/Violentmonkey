@@ -3,7 +3,7 @@
 // @namespace   https://github.com/amaury-repo/Violentmonkey
 // @match       http://192.168.10.2:9002/
 // @grant       none
-// @version     20250720
+// @version     20250722
 // @author      Amaury
 // @description 额外充电预测
 // ==/UserScript==
@@ -61,10 +61,12 @@
 
     // 充电剩余时间
     const timeText = timeEl.textContent.replace(/\u00A0/g, ' ').trim();
+    const dayMatch = timeText.match(/(\d+)\s*d/);
     const hourMatch = timeText.match(/(\d+)\s*h/);
     const minMatch = timeText.match(/(\d+)\s*min/);
 
     let totalMinutes = 0;
+    if (dayMatch) totalMinutes += parseInt(dayMatch[1], 10) * 1440;
     if (hourMatch) totalMinutes += parseInt(hourMatch[1], 10) * 60;
     if (minMatch) totalMinutes += parseInt(minMatch[1], 10);
 
