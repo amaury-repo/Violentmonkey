@@ -46,7 +46,7 @@
     const limitEl = getValueByLabel("充电上限");
     const currentEl = getValueByLabel("当前电量");
 
-    //未充电提示
+    // 未充电提示
     if (!timeEl || !limitEl || !currentEl) {
       showTips("充电停止");
       return;
