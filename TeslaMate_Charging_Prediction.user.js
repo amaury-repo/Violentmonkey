@@ -46,8 +46,9 @@
     const limitEl = getValueByLabel("充电上限");
     const currentEl = getValueByLabel("当前电量");
 
+    //未充电提示
     if (!timeEl || !limitEl || !currentEl) {
-      showError("充电停止");
+      showTips("充电停止");
       return;
     }
 
@@ -70,9 +71,9 @@
     if (hourMatch) totalMinutes += parseInt(hourMatch[1], 10) * 60;
     if (minMatch) totalMinutes += parseInt(minMatch[1], 10);
 
-    // 校验数据
+    // 充电完成提示
     if (currentPercent >= targetPercent) {
-      showError("充电完成");
+      showTips("充电完成");
       return;
     }
 
@@ -143,8 +144,8 @@
     document.body.appendChild(predictionElement);
   }
 
-  // 错误提示
-  function showError(message) {
+  // 其他提示
+  function showTips(message) {
     const titleEl = getTitleElement();
     if (titleEl) {
       const titleRect = titleEl.getBoundingClientRect();
