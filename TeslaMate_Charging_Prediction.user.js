@@ -3,7 +3,7 @@
 // @namespace   https://github.com/amaury-repo/Violentmonkey
 // @match       http://192.168.10.2:9002/
 // @grant       none
-// @version     20250722
+// @version     20250724
 // @author      Amaury
 // @description 额外充电预测
 // ==/UserScript==
@@ -48,7 +48,7 @@
 
     // 未充电提示
     if (!timeEl || !limitEl || !currentEl) {
-      showTips("充电停止");
+      showTips("未充电");
       return;
     }
 
@@ -73,7 +73,7 @@
 
     // 充电完成提示
     if (currentPercent >= targetPercent) {
-      showTips("充电完成");
+      showTips("电量到达");
       return;
     }
 
