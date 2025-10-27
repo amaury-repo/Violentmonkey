@@ -3,7 +3,7 @@
 // @namespace   https://github.com/amaury-repo/Violentmonkey
 // @match       http://192.168.10.2:9002/
 // @grant       none
-// @version     20250724
+// @version     20251027
 // @author      Amaury
 // @description 额外充电预测
 // ==/UserScript==
@@ -107,7 +107,7 @@
       border-radius: 0.25rem;
       box-shadow: 0 0.5em 1em -0.125em #0a0a0a1a, 0 0 0 1px #0a0a0a05;
       color: #4a4a4a;
-      font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-family: "Sarasa Fixed SC", BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
       font-size: 1em;
       padding: 1.5rem;
       z-index: 9999;
@@ -158,7 +158,7 @@
         border-radius: 0.25rem;
         box-shadow: 0 0.5em 1em -0.125em #0a0a0a1a, 0 0 0 1px #0a0a0a05;
         color: #4a4a4a;
-        font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-family: "Sarasa Fixed SC", BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
         font-size: 1em;
         padding: 1.5rem;
         z-index: 9999;
