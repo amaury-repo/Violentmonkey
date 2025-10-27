@@ -111,7 +111,7 @@
       font-size: 1em;
       padding: 1.5rem;
       z-index: 9999;
-      max-width: 200px;
+      max-width: 210px;
       max-height: 80px;
     `;
 
@@ -134,8 +134,8 @@
       margin-top: -5px;
     `;
     contentDiv.innerHTML = `
-      充电剩余时间&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${formatTime(estMinutes)}<br>
-      预计完成时间&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${finishTime.toLocaleTimeString()}
+      充电剩余时间&nbsp;&nbsp;&nbsp;${formatTime(estMinutes)}<br>
+      预计完成时间&nbsp;&nbsp;&nbsp;${finishTime.toLocaleTimeString()}
     `;
 
     // 组装
