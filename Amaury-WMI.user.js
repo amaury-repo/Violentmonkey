@@ -21,7 +21,7 @@
     `;
     document.head.appendChild(style);
     
-    // 屏蔽右键菜单
+    // 屏蔽右键
     const disableContextMenu = (e) => {
         e.stopImmediatePropagation();
         e.preventDefault();
