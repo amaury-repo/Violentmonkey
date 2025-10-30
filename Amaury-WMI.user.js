@@ -13,12 +13,10 @@
 
     // 修改字体
     const fontName = "Sarasa Fixed SC";
-    const fontSize = "12px";
     const style = document.createElement('style');
     style.innerHTML = `
         * {
             font-family: '${fontName}', sans-serif !important;
-            font-size: ${fontSize} !important;
         }
     `;
     document.head.appendChild(style);
