@@ -5,7 +5,7 @@
 // @grant       none
 // @version     20251030
 // @author      Amaury
-// @description 自用
+// @description Amaury's optimizations for MilkyWayIdle
 // ==/UserScript==
 
 (function () {
