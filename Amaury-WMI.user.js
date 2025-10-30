@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        Optimizations for MilkyWayIdle
+// @name        Amaury's optimizations for MilkyWayIdle
 // @namespace   https://github.com/amaury-repo/Violentmonkey
 // @match       *://www.milkywayidle.com/*
 // @grant       none
@@ -13,7 +13,7 @@
 
     // 修改字体
     const fontName = "Sarasa Fixed SC";
-    const fontSize = "14px";
+    const fontSize = "12px";
     const style = document.createElement('style');
     style.innerHTML = `
         * {
