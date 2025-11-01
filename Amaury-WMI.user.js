@@ -3,7 +3,7 @@
 // @namespace   https://github.com/amaury-repo/Violentmonkey
 // @match       *://www.milkywayidle.com/*
 // @grant       none
-// @version     20251101.1
+// @version     20251102
 // @author      Amaury
 // @description Amaury's optimizations for MilkyWayIdle
 // ==/UserScript==
@@ -29,13 +29,6 @@
     };
     window.addEventListener('contextmenu', disableContextMenu, true);
     document.addEventListener('contextmenu', disableContextMenu, true);
-
-    // 每小时自动刷新页面
-    const refreshInterval = 3600000;
-    setInterval(() => {
-        window.location.reload();
-    }, refreshInterval);
-
 
     // 库存价格分类累加显示
     let categoryPrices = {};
