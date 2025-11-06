@@ -2,8 +2,9 @@
 // @name        Amaury's optimizations for MilkyWayIdle
 // @namespace   https://github.com/amaury-repo/Violentmonkey
 // @match       *://www.milkywayidle.com/*
+// @match       *://www.milkywayidlecn.com/*
 // @grant       none
-// @version     20251102.1
+// @version     20251106
 // @author      Amaury
 // @description Amaury's optimizations for MilkyWayIdle
 // ==/UserScript==
