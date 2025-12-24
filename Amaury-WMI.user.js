@@ -4,7 +4,7 @@
 // @match       *://www.milkywayidle.com/*
 // @match       *://www.milkywayidlecn.com/*
 // @grant       none
-// @version     20251224
+// @version     20251224_1
 // @author      Amaury
 // @description Amaury's optimizations for MilkyWayIdle
 // ==/UserScript==
@@ -12,8 +12,8 @@
 (function () {
     'use strict';
 
-    // 刷新前10分钟自动执行补货
-    setTimeout(() => document.querySelector("#restock-execute-selected")?.click(), 50 * 60 * 1000);
+    // 加载后1分钟执行一次补货
+    setTimeout(() => document.querySelector("#restock-execute-selected")?.click(), 60 * 1000);
     
     // 每小时自动刷新页面
     const refreshInterval = 3600000;
