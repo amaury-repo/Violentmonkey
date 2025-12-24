@@ -4,7 +4,7 @@
 // @match       *://www.milkywayidle.com/*
 // @match       *://www.milkywayidlecn.com/*
 // @grant       none
-// @version     20251106
+// @version     20251224
 // @author      Amaury
 // @description Amaury's optimizations for MilkyWayIdle
 // ==/UserScript==
