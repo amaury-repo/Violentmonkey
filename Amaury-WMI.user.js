@@ -11,6 +11,9 @@
 
 (function () {
     'use strict';
+
+    // 刷新前10分钟自动执行补货
+    setTimeout(() => document.querySelector("#restock-execute-selected")?.click(), 50 * 60 * 1000);
     
     // 每小时自动刷新页面
     const refreshInterval = 3600000;
