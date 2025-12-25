@@ -16,10 +16,9 @@
     setTimeout(() => document.querySelector("#restock-execute-selected")?.click(), 1 * 60 * 1000);
     
     // 每小时自动刷新页面
-    const refreshInterval = = 60 * 60 * 1000;
     setInterval(() => {
         window.location.reload();
-    }, refreshInterval);
+    }, 60 * 60 * 1000);
     
     // 修改字体
     const fontName = "Sarasa Fixed SC";
