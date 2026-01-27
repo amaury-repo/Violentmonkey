@@ -21,7 +21,7 @@
     }, 60 * 60 * 1000);
     
     // 修改字体
-    const fontName = "Maple-Mono-NF-CN";
+    const fontName = "Maple Mono NF CN";
     const style = document.createElement('style');
     style.innerHTML = `
         * {
