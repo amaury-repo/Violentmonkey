@@ -4,7 +4,7 @@
 // @match       *://www.milkywayidle.com/*
 // @match       *://www.milkywayidlecn.com/*
 // @grant       none
-// @version     20260127
+// @version     20260128
 // @author      Amaury
 // @description Amaury's optimizations for MilkyWayIdle
 // ==/UserScript==
@@ -21,7 +21,7 @@
     }, 60 * 60 * 1000);
     
     // 修改字体
-    const fontName = "Maple Mono NF CN";
+    const fontName = "Sarasa Mono SC";
     const style = document.createElement('style');
     style.innerHTML = `
         * {
