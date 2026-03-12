@@ -4,7 +4,7 @@
 // @match       *://www.milkywayidle.com/*
 // @match       *://www.milkywayidlecn.com/*
 // @grant       none
-// @version     20260225
+// @version     20260312
 // @author      Amaury
 // @description Amaury's optimizations for MilkyWayIdle
 // ==/UserScript==
@@ -16,16 +16,6 @@
     setInterval(() => {
         window.location.reload();
     }, 60 * 60 * 1000);
-    
-    // 修改字体
-    const fontName = "Sarasa Mono SC";
-    const style = document.createElement('style');
-    style.innerHTML = `
-        * {
-            font-family: '${fontName}', sans-serif !important;
-        }
-    `;
-    document.head.appendChild(style);
 
     // 屏蔽右键菜单
     const disableContextMenu = (e) => {
