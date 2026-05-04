@@ -4,7 +4,7 @@
 // @match       *://www.milkywayidle.com/*
 // @match       *://www.milkywayidlecn.com/*
 // @grant       none
-// @version     20260503
+// @version     20260504
 // @author      Amaury
 // @description Amaury's optimizations for MilkyWayIdle
 // ==/UserScript==
@@ -12,9 +12,18 @@
 (function () {
     'use strict';
     
-    // 每小时自动刷新页面
+    // 自动刷新页面
     setInterval(() => {
-        window.location.reload();
+        const selectors = [
+            'div[class*="Header_displayName"]',
+            'div[class*="CharacterName_name"]'
+        ];
+    
+        const isAlive = selectors.some(s => document.querySelector(s));
+    
+        if (!isAlive) {
+            location.reload();
+        }
     }, 60 * 60 * 1000);
 
     // 修改字体
