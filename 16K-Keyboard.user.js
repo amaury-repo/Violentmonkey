@@ -14,6 +14,7 @@
         if (event.keyCode == 37) {
             // ←
             document.getElementsByClassName('btn btn-outline-secondary')[0].click()
+            document.querySelector('#prev')?.click();
         }
         if (event.keyCode == 70) {
             // F
@@ -22,6 +23,7 @@
         if (event.keyCode == 39) {
             // →
             document.getElementsByClassName('btn btn-outline-secondary')[2].click()
+            document.querySelector('#next')?.click();
         }
     }
     document.addEventListener('mousedown', function(event) {
@@ -29,6 +31,7 @@
             // 鼠标中键
             event.preventDefault()
             document.getElementsByClassName('btn btn-outline-secondary')[2].click()
+            document.querySelector('#next')?.click();
         }
     });
 })();
