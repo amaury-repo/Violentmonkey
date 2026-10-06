@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         16K Keyboard
 // @namespace    https://github.com/amaury-repo/Violentmonkey
-// @version      0.1
+// @version      20261006
 // @description  使用键盘快捷键浏览
 // @author       Amaury
 // @match        *://16k.club/*
+// @match        *://16knote.com/*
 // @grant        none
 // ==/UserScript==
 
